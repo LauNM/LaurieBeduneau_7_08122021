@@ -102,12 +102,20 @@
 .recipe-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 .recipe-title {
+    width: calc(100% - 90px);
     margin: 0;
+    line-height: 21,6px;
+    height: calc(21,6px * 2);
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
 }
 .recipe-cooktime {
+    width: 90px;
     display: flex;
     align-items: center;
 }
@@ -124,15 +132,20 @@
 .ingredients-list {
     width: 50%;
     line-height: 14.4px;
+    height: calc(14.4px * 7);
+    -webkit-line-clamp: 7;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
 }
 .recipe-text {
     width: 50%;
+    height: calc(12px * 8);
     line-height: 12px;
-    overflow: hidden;
-    display: -webkit-box;
     -webkit-line-clamp: 8;
+    display: -webkit-box;
     -webkit-box-orient: vertical;
-    text-align: initial;
+    overflow: hidden; 
 }
 
 

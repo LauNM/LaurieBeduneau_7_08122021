@@ -1,4 +1,5 @@
-import { recipes } from "./data.js";
+import {newData} from "./filters.js";
+const recipesContainer = document.getElementById('recipes');
 
 const displayContent = (data) => {
     const container = document.createElement('div');
@@ -12,8 +13,6 @@ const displayContent = (data) => {
     container.appendChild(addRecipe(data));
     return container;
 }
-
-
 
 const addRecipe = (data) => {
     const recipe = document.createElement('section');
@@ -85,9 +84,11 @@ const addRecipe = (data) => {
 
 
 
+async function displayData() {
+   await newData.forEach(element => {
+    recipesContainer.appendChild(displayContent(element));
+    })
+}
 
-const recipesContainer = document.getElementById('recipes');
+displayData();
 
-recipes.forEach(recipe => {
-    recipesContainer.appendChild(displayContent(recipe));
-})
