@@ -1,0 +1,33 @@
+:root {
+    --white: #fff;
+    --grey: #E7E7E7;
+    --imageBackground: #C7BEBE;
+    --blue: #3282F7;
+    --green: #68D9A4;
+    --red: #ED6454;
+
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+button, a, input {
+    font-family:  'Lato', sans-serif;
+}
+
+button p, input, h2 {
+    font-size: 18px;
+}
+
+p {
+    margin: 0;
+    font-size: 12px;
+}
+
+h2 {
+    font-weight: 400;
+}
+
+* {box-sizing: border-box;}
+body {
+    margin: 42px 100px;
+}

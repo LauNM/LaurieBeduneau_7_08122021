@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/variables.css">
+    <title>Les petits plats</title>
+</head>
+<body>
+    <header>
+        <img class="logo" src="./assets/img/logo.svg" alt="logo">
+        <form
+            action=""
+            method="get"
+            class="form">
+            <div class="input-container">
+                <input
+                type="text"
+                name="search"
+                id="search"
+                class="input-field"
+                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <i class="fas fa-search icon"></i>
+            </div>
+        </form>
+        <div class="filters">
+            <button id="ingredients" class="filter-button bold">
+                <p>Ingrédients</p>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <button id="devices" class="filter-button bold">
+                <p>Appareils</p>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <button id="utensils" class="filter-button bold">
+                <p>Ustensiles</p>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </header>
+    <main>
+        <div id="recipes"></div>
+    </main>
+    <script type="module" src="./assets/js/display.js"></script>
+</body>
+</html>
