@@ -1,20 +1,16 @@
-import { recipes } from "./data.js";
-export let newData;
 
-const searchInput = document.getElementById('search');
-
-const inputValue = () => {
-    searchInput.addEventListener('keyup', () => {
-       if(searchInput.value.length > 2) {
-           return searchInput.value
-       }
+export const filteredRecipesList = (data, filterElements) => {
+    let newData = [];
+    if (filterElements) {
+    newData =  data.filter((item) => {
+       return item.name.toLowerCase().includes(filterElements.toLowerCase()) 
+       || item.description.toLowerCase().includes(filterElements.toLowerCase()) 
+       || item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(filterElements.toLowerCase()))
     })
-}
-inputValue();
-
-
-if (searchInput.value && searchInput.value.length && searchInput.value.length !== 0) {
-    newData = recipes[0];
-} else {
-    newData = recipes;
+        
+    }
+    else {
+        newData = data;
+    }
+    return newData;
 }

@@ -1,4 +1,3 @@
-import {newData} from "./filters.js";
 const recipesContainer = document.getElementById('recipes');
 
 const displayContent = (data) => {
@@ -84,11 +83,10 @@ const addRecipe = (data) => {
 
 
 
-async function displayData() {
-   await newData.forEach(element => {
+export function displayData(recipeList) {
+    // await newData.forEach(element => {
+    recipesContainer.innerHTML = ""
+    recipeList.forEach(element => {
     recipesContainer.appendChild(displayContent(element));
     })
 }
-
-displayData();
-
