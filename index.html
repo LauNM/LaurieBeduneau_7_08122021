@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,36 +13,54 @@
     <link rel="stylesheet" href="./assets/css/variables.css">
     <title>Les petits plats</title>
 </head>
+
 <body>
     <header>
         <img class="logo" src="./assets/img/logo.svg" alt="logo">
-        <form
-            action=""
-            method="get"
-            class="form">
+        <form action="" method="get" class="form">
             <div class="input-container">
-                <input
-                type="text"
-                name="search"
-                id="search"
-                class="input-field"
-                placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
+                <input type="text" name="search" id="search" class="input-field"
+                    placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette">
                 <i class="fas fa-search icon"></i>
             </div>
         </form>
         <div class="filters">
-            <button id="ingredients" class="filter-button bold">
-                <p>Ingrédients</p>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <button id="devices" class="filter-button bold">
-                <p>Appareils</p>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <button id="utensils" class="filter-button bold">
-                <p>Ustensiles</p>
-                <i class="fas fa-chevron-down"></i>
-            </button>
+            <div>
+                <button id="ingredients" class="filter-dropdown bold bg-blue">
+                    <p>Ingrédients</p>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </button>
+                <div class="content bg-blue">
+                    <div class="content-header">
+                        <input type="text" placeholder="Recherche un ingrédient" />
+                        <span class="close"><i class="fas fa-chevron-up"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button id="appliance" class="filter-dropdown bold bg-green">
+                    <p>Appareils</p>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </button>
+                <div class="content bg-green">
+                    <div class="content-header">
+                        <input type="text" placeholder="Recherche un appareil"/>
+                        <span class="close"><i class="fas fa-chevron-up"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button id="utensils" class="filter-dropdown bold bg-red">
+                    <p>Ustensiles</p>
+                    <span><i class="fas fa-chevron-down"></i></span>
+                </button>
+                <div class="content bg-red">
+                    <div class="content-header">
+                        <input type="text" placeholder="Recherche un ustensile" />
+                        <span class="close"><i class="fas fa-chevron-up"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <main>
@@ -49,4 +68,5 @@
     </main>
     <script type="module" src="./assets/js/main.js"></script>
 </body>
+
 </html>

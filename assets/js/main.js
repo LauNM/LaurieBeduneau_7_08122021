@@ -1,23 +1,50 @@
 import { filteredRecipesList } from "./filters.js";
-import { displayData } from "./display.js";
-import {recipes} from "./data.js";
+import { displayDropdownElements, createIngredientsList, createApplianceList, createUstensilsList } from "./displayLists.js";
+import { displayData } from "./displayRecipe.js";
+import { recipes } from "./data.js";
 
+const searchBarInput = document.getElementById('search');
 
-const searchInput = document.getElementById('search');
+const ingredientsButton = document.getElementById("ingredients");
+const applianceButton = document.getElementById("appliance");
+const utensilsButton = document.getElementById("utensils");
+const dropdowns = document.getElementsByClassName("filter-dropdown");
+const closeDropdown = document.getElementsByClassName("close");
 
-let tempSearch = [...recipes];
-let ingredientList = [];
+let data = [...recipes];
+let filterBySearchBar = [...recipes];
+let ingredientList = [...createIngredientsList(data)];
+let applianceList = [...createApplianceList(data)];
+let ustensilsList = [...createUstensilsList(data)];
 
+ingredientsButton.nextElementSibling.appendChild(displayDropdownElements(ingredientList));
+applianceButton.nextElementSibling.appendChild(displayDropdownElements(applianceList));
+utensilsButton.nextElementSibling.appendChild(displayDropdownElements(ustensilsList));
 
-searchInput.addEventListener('keyup', () => {
-    console.log(searchInput.value)
-    if (searchInput.value.length > 2) {
-        tempSearch = filteredRecipesList(recipes, searchInput.value);
-        displayData(tempSearch);
+/* Get dropdown buttons by className and add an event listener */
+Array.from(dropdowns).forEach((el) => {
+    el.addEventListener('click', () => {
+        el.style.display = "none"
+        el.nextElementSibling.style.display = "block";
+    })
+})
+
+/* Get icon chevron up and add an event listener */
+Array.from(closeDropdown).forEach((el) => {
+    el.addEventListener('click', () => {
+        let listDropdown = el.parentElement.parentElement;
+        listDropdown.style.display = "none"
+        listDropdown.previousElementSibling.style.display = "flex";
+    })
+})
+
+displayData(recipes);
+searchBarInput.addEventListener('input', (e) => {
+    if (e.target.value.length > 2) {
+        filterBySearchBar = filteredRecipesList(recipes, e.target.value);
+        displayData(filterBySearchBar);
     }
     else {
         displayData(recipes);
     }
 })
-
-displayData(recipes);

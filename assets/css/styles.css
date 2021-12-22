@@ -7,7 +7,6 @@
     font-weight: 700;
 }
 
-
 /* INPUT SEARCH */
 .input-container {
     display: flex;
@@ -43,30 +42,68 @@
 .filters {
     display: inline-flex;
 }
-.filter-button {
+.filter-dropdown {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin-right: 20px;
     border-radius: 5px;
-    height: 69px;
-    width: 170px;
+    min-width: 170px;
     padding: 23px 18px 24px 26px;
     border: none;
-    color: var(--white);
-    font-size: 18px;
+    cursor: pointer;
 }
-#ingredients {
-    background-color: var(--blue);
-}
-#devices {
-    background-color: var(--green);
-}
-#utensils {
-    background-color: var(--red);
+.filter-dropdown p {
+    font-size:18px;
 }
 
+.content {
+    margin-right: 20px;
+    border-radius: 5px;
+    min-width: 170px;
+    padding: 23px 18px 24px 26px;
+    border: none;
+    display: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 999;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content-header input{
+    background-color: inherit;
+    opacity: 50%;
+    color: inherit;
+    border-color: transparent;
+}
+.content-header input:focus {
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+.content-header input::placeholder{
+    color: inherit;
+}
+.content-header span {
+    cursor: pointer;
+}
+
+.list-elements {
+    column-count: 3;
+    z-index: 999;
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+    line-height: 21.6px;
+}
+.list-elements li {
+    padding-bottom: 10px;
+}
 
 /* RECIPES */
 

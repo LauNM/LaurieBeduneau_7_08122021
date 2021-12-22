@@ -1,18 +1,5 @@
 const recipesContainer = document.getElementById('recipes');
 
-const displayContent = (data) => {
-    const container = document.createElement('div');
-    container.className = "recipe-container";
-    container.id = `recipe-${data.id}`;
-    
-    const image = document.createElement('section');
-    image.className = "recipe-image";
-
-    container.appendChild(image);
-    container.appendChild(addRecipe(data));
-    return container;
-}
-
 const addRecipe = (data) => {
     const recipe = document.createElement('section');
     recipe.className = "recipe-description";
@@ -81,12 +68,24 @@ const addRecipe = (data) => {
     return recipe;
 }
 
+const createContainer = (data) => {
+    const container = document.createElement('div');
+    container.className = "recipe-container";
+    container.id = `recipe-${data.id}`;
+    
+    const image = document.createElement('section');
+    image.className = "recipe-image";
 
+    container.appendChild(image);
+    container.appendChild(addRecipe(data));
+    return container;
+}
 
 export function displayData(recipeList) {
     // await newData.forEach(element => {
     recipesContainer.innerHTML = ""
     recipeList.forEach(element => {
-    recipesContainer.appendChild(displayContent(element));
+    recipesContainer.appendChild(createContainer(element));
     })
 }
+
