@@ -35,7 +35,26 @@
     text-align: center;
     font-size: 32px;
 }
+/* TAGS */
+#tags {
+    display: flex;
+    align-items: center;
+}
+.tag-container {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 10px 20px;
+    margin: 10px 20px 15px 0;
+    border: none;
+    border-radius: 5px;
+}
 
+.tag-name {
+    margin-right: 10px;
+}
+.close-tag {
+    cursor: pointer;
+}
 
 /* FILTERS */
 
@@ -93,7 +112,7 @@
     cursor: pointer;
 }
 
-.list-elements {
+.list-of-elements {
     column-count: 3;
     z-index: 999;
     list-style: none;
@@ -101,8 +120,9 @@
     font-size: 18px;
     line-height: 21.6px;
 }
-.list-elements li {
+.list-element {
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 /* RECIPES */
