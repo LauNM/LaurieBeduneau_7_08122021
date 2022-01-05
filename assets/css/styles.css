@@ -41,12 +41,20 @@
     align-items: center;
 }
 .tag-container {
-    background-color: var(--blue);
     color: var(--white);
     padding: 10px 20px;
     margin: 10px 20px 15px 0;
     border: none;
     border-radius: 5px;
+}
+.tag-container[data-type="ingredients"] {
+    background-color: var(--blue);
+}
+.tag-container[data-type="appliance"] {
+    background-color: var(--green);
+}
+.tag-container[data-type="ustensils"] {
+    background-color: var(--red);
 }
 
 .tag-name {
@@ -129,6 +137,7 @@
 
 #recipes {
     display: flex;
+    min-width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 25px;

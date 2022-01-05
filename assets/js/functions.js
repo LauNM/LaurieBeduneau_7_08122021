@@ -1,6 +1,7 @@
-export const displayTag = (tag) => {
+export const displayTag = (tag, type) => {
     const tagContainer = document.createElement('span');
     tagContainer.className = "tag-container";
+    tagContainer.setAttribute('data-type', type);
 
     const tagName = document.createElement('span');
     tagName.className = "tag-name";

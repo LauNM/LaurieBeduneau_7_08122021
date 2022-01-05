@@ -9,12 +9,29 @@ export const filteredRecipesList = (data, filterElements) => {
 
 export const filterByKeyWord = (data, keyWordsTab) => {
     let newData = [...data];
-    keyWordsTab.forEach((tag) => {
-        newData = newData.filter((item) => {
-            return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.toLowerCase()))
-                || item.appliance.toLowerCase().includes(tag.toLowerCase())
-                || item.ustensils.some((elemUst) => elemUst.toLowerCase().includes(tag.toLowerCase()))
-        })
+    Array.from(keyWordsTab).forEach((tag) => {
+        const typeOfTag = tag.parentElement.getAttribute('data-type')
+     
+        switch (typeOfTag) {
+            case 'ingredients': 
+                newData = newData.filter((item) => {
+                    return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.innerHTML.toLowerCase()))
+                })
+                break;
+            case 'appliance':
+                newData = newData.filter((item) => {
+                    return item.appliance.toLowerCase().includes(tag.innerHTML.toLowerCase())
+                })
+                break;
+            case 'ustensils':
+                newData = newData.filter((item) => {
+                    return item.ustensils.some((elemUst) => elemUst.toLowerCase().includes(tag.innerHTML.toLowerCase()))
+                })
+                break;
+            default:
+                return newData;
+        }
+       
     })
-    console.log(newData);
+    return newData;
 }

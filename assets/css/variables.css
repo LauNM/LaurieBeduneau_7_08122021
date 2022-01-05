@@ -49,4 +49,5 @@ body {
 main {
     position: absolute;
     top: 396px;
+    width: 100%;
 }
