@@ -7,12 +7,11 @@ export const filteredRecipesList = (data, filterElements) => {
     return newData;
 }
 
-export const filterByKeyWord = (data, keyWordsTab) => {
+export const filterByKeyWord = (data, keyWords) => {
     let newData = [...data];
-    Array.from(keyWordsTab).forEach((tag) => {
-        const typeOfTag = tag.parentElement.getAttribute('data-type')
-     
-        switch (typeOfTag) {
+    Array.from(keyWords).forEach((tag) => {
+      const typeOfTag = tag.parentElement.getAttribute('data-type')
+          switch (typeOfTag) {
             case 'ingredients': 
                 newData = newData.filter((item) => {
                     return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.innerHTML.toLowerCase()))

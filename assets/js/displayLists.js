@@ -6,7 +6,7 @@ export const displayDropdownElements = (list, type) => {
         const listElement = document.createElement('li');
         listElement.textContent = element;
         listElement.className = "list-element";
-        listContent.appendChild(listElement)
+        listContent.appendChild(listElement);
     })
     return listContent;
 
@@ -68,35 +68,30 @@ const closeAllDropdown = (dropdowns) => {
     })
 }
 
-/* Get icon chevron up and add an event listener */
-export const closeDropdown = (closeDropdown) => {
-   Array.from(closeDropdown).forEach((el) => {
-    el.addEventListener('click', () => {
-        let listDropdown = el.parentElement.parentElement;
-        listDropdown.style.display = "none"
-        listDropdown.previousElementSibling.style.display = "flex";
-        })
-    }) 
-}
+export const closeDropdown = (el) => { 
+    let listDropdown = el;
+    listDropdown.style.display = "none"
+    listDropdown.previousElementSibling.style.display = "flex";
+ }
 
 
 const ingredientsButton = document.getElementById("ingredients");
 const applianceButton = document.getElementById("appliance");
 const utensilsButton = document.getElementById("utensils");
 
-export const refreshIngredientsList = (list) => {
+export const createDropdownIngredients = (list) => {
     if(ingredientsButton.nextElementSibling.querySelector(".list-of-elements")) {
         ingredientsButton.nextElementSibling.querySelector(".list-of-elements").remove();
     }
     ingredientsButton.nextElementSibling.appendChild(displayDropdownElements(list, 'ingredients'));
 }
-export const refreshApplianceList = (list) => {
+export const createDropdownAppliance = (list) => {
     if(applianceButton.nextElementSibling.querySelector(".list-of-elements")) {
         applianceButton.nextElementSibling.querySelector(".list-of-elements").remove();
     }
     applianceButton.nextElementSibling.appendChild(displayDropdownElements(list, 'appliance'));
 }
-export const refreshUstensilsList = (list) => {
+export const createDropdownUstensils = (list) => {
     if(utensilsButton.nextElementSibling.querySelector(".list-of-elements")) {
         utensilsButton.nextElementSibling.querySelector(".list-of-elements").remove();
     }

@@ -82,7 +82,6 @@ const createContainer = (data) => {
 }
 
 export function displayData(recipeList) {
-    // await newData.forEach(element => {
     recipesContainer.innerHTML = ""
     recipeList.forEach(element => {
     recipesContainer.appendChild(createContainer(element));
