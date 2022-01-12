@@ -7,6 +7,8 @@ export const filteredRecipesList = (data, filterElements) => {
     return newData;
 }
 
+//réécrire avec une boucle for
+
 export const filterByKeyWord = (data, keyWords) => {
     let newData = [...data];
     Array.from(keyWords).forEach((tag) => {
@@ -33,4 +35,11 @@ export const filterByKeyWord = (data, keyWords) => {
        
     })
     return newData;
+}
+
+export const filterInList = (list, input) => {
+    let newList = list.filter((item) => {
+        return item.toLowerCase().includes(input.toLowerCase())
+    })
+    return newList;
 }
