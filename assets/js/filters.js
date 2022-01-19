@@ -11,35 +11,49 @@ export const filteredRecipesList = (data, filterElements) => {
 
 export const filterByKeyWord = (data, keyWords) => {
     let newData = [...data];
-    Array.from(keyWords).forEach((tag) => {
-      const typeOfTag = tag.parentElement.getAttribute('data-type')
-          switch (typeOfTag) {
-            case 'ingredients': 
-                newData = newData.filter((item) => {
-                    return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.innerHTML.toLowerCase()))
-                })
-                break;
-            case 'appliance':
-                newData = newData.filter((item) => {
-                    return item.appliance.toLowerCase().includes(tag.innerHTML.toLowerCase())
-                })
-                break;
-            case 'ustensils':
-                newData = newData.filter((item) => {
-                    return item.ustensils.some((elemUst) => elemUst.toLowerCase().includes(tag.innerHTML.toLowerCase()))
-                })
-                break;
-            default:
-                return newData;
-        }
-       
-    })
+    if (keyWords.length > 0) {
+        keyWords.forEach((tag) => {
+            const typeOfTag = tag.type;
+            switch (typeOfTag) {
+                case 'ingredients':
+                    newData = newData.filter((item) => {
+                        return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.value.toLowerCase()))
+                    })
+                    break;
+                case 'appliance':
+                    newData = newData.filter((item) => {
+                        return item.appliance.toLowerCase().includes(tag.value.toLowerCase())
+                    })
+                    break;
+                case 'ustensils':
+                    newData = newData.filter((item) => {
+                        return item.ustensils.some((elemUst) => elemUst.toLowerCase().includes(tag.value.toLowerCase()))
+                    })
+                    break;
+                default:
+                    return newData;
+            }
+
+        })
+    }
+
     return newData;
 }
 
-export const filterInList = (list, input) => {
-    let newList = list.filter((item) => {
-        return item.toLowerCase().includes(input.toLowerCase())
+/* export const filterDropdownByKeyWord = (dropdownInput, list, creationDropdownList) => {
+    let newList = [];
+    const input = document.getElementById(dropdownInput);
+    input.addEventListener('input', (e) => {
+         if(e.target.value.length > 0) {
+             newList = list.filter((item) => {
+                return item.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+         }
+         else {
+             newList = list
+         }
+        creationDropdownList(newList);
+        console.log(filterBySearchBar)
+        addDropdownListener(filterBySearchBar);
     })
-    return newList;
-}
+} */

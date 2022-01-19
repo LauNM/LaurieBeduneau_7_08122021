@@ -1,4 +1,4 @@
-import { filteredRecipesList, filterByKeyWord, filterInList } from "./filters.js";
+import { filteredRecipesList, filterByKeyWord } from "./filters.js";
 import {
     createIngredientsList,
     createApplianceList,
@@ -11,14 +11,31 @@ import {
 } from "./displayLists.js";
 import { displayData } from "./displayRecipe.js";
 import { recipes } from "./data.js";
-import { createTag } from "./tag.js";
+import { createTag, getTagInfos } from "./tag.js";
 
 const searchBarInput = document.getElementById('search');
-const dropdowns = document.getElementsByClassName("filter-dropdown");
+const dropdowns = [...document.getElementsByClassName("filter-dropdown")];
 
 const tagSection = document.getElementById("tags");
 const tags = document.getElementsByClassName("tag-name");
-const dropdownsContent = document.getElementsByClassName("content");
+const dropdownsContent = [...document.getElementsByClassName("content")];
+
+const filterDropdownByKeyWord = (dropdownInput, list, creationDropdownList) => {
+    let newList = [];
+    const input = document.getElementById(dropdownInput);
+    input.addEventListener('input', (e) => {
+        if (e.target.value.length > 0) {
+            newList = list.filter((item) => {
+                return item.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+        }
+        else {
+            newList = list
+        }
+        creationDropdownList(newList);
+        addDropdownListener(filterBySearchBar);
+    })
+}
 
 openDropdown(dropdowns);
 
@@ -47,17 +64,23 @@ const loadData = (data) => {
     createLists(data);
     createAllDropdown();
     addDropdownListener(data);
+    filterDropdownByKeyWord('appliances-input', applianceList, createDropdownAppliance);
+    filterDropdownByKeyWord('ustensils-input', ustensilsList, createDropdownUstensils);
+    filterDropdownByKeyWord('ingredients-input', ingredientList, createDropdownIngredients);
     displayData(data);
 }
 
 loadData(recipes)
 
+
+
+
 /* Filter with searchBar */
 
 searchBarInput.addEventListener('input', (e) => {
     if (e.target.value.length > 2) {
-        if(tags.length > 0) {
-            filterByTag = filterByKeyWord(recipes, tags);
+        if (tags.length > 0) {
+            filterByTag = filterByKeyWord(recipes, getTagInfos(tags));
             filterBySearchBar = filteredRecipesList(filterByTag, e.target.value);
         }
         else {
@@ -66,8 +89,8 @@ searchBarInput.addEventListener('input', (e) => {
         loadData(filterBySearchBar)
     }
     else {
-        if(tags.length > 0) {
-            filterBySearchBar = filterByKeyWord(recipes, tags);
+        if (tags.length > 0) {
+            filterBySearchBar = filterByKeyWord(recipes, getTagInfos(tags));
         }
         else {
             filterBySearchBar = recipes
@@ -77,10 +100,14 @@ searchBarInput.addEventListener('input', (e) => {
 })
 
 
+
+
 /* Filter by tag */
 
 function addDropdownListener(data) {
-    Array.from(dropdownsContent).forEach((dropdown) => {
+    dropdownsContent.forEach((dropdown) => {
+       
+        
         const list = [...dropdown.querySelectorAll(".list-element")];
         list.forEach((li) => {
             li.addEventListener("click", (e) => {
@@ -89,18 +116,22 @@ function addDropdownListener(data) {
                 const tag = createTag(e.target.textContent, type);
                 tagSection.appendChild(tag)
 
-                filterByTag = filterByKeyWord(data, tags);
-                loadData(filterByTag)
+                console.log('data before :', data)
+                filterByTag = filterByKeyWord(data, getTagInfos(tags));
 
+                
+
+                console.log('tags : ', getTagInfos(tags))
+                loadData(filterByTag)
                 tag.addEventListener('click', () => {
                     tagSection.removeChild(tag)
-                    console.log(searchBarInput.value.length)
-                    if(searchBarInput.value.length > 2) {
+                    console.log(getTagInfos(tags))
+                    if (searchBarInput.value.length > 2) {
                         filterBySearchBar = filteredRecipesList(recipes, searchBarInput.value);
-                        filterByTag = filterByKeyWord(filterBySearchBar, tags);
+                        filterByTag = filterByKeyWord(filterBySearchBar, getTagInfos(tags));
                     }
                     else {
-                        filterByTag = filterByKeyWord(recipes, tags);
+                        filterByTag = filterByKeyWord(recipes, getTagInfos(tags));
                     }
                     loadData(filterByTag)
                 })
@@ -110,6 +141,8 @@ function addDropdownListener(data) {
 }
 
 
-    
+
+
+
 
 

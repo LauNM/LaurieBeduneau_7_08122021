@@ -15,18 +15,12 @@ export const createTag = (value, type) => {
     return tagContainer;
 }
 
-export const eventCreationTag = (data) =>  {
-    /* Array.from(listElement).forEach((el) => {
-    el.addEventListener('click', () => {
-            const type = el.parentElement.getAttribute('data-type');
-            const tag = createTag(el.innerHTML, type);
-            tagSection.appendChild(tag) 
-            tag.addEventListener('click', () => {
-                tagSection.removeChild(tag)
-                displayData(filterByKeyWord(data, tags))
-            })
-            displayData(filterByKeyWord(data, tags))
-        })
-    }) */
-   
+export const getTagInfos = (array) => {
+    let newArray = [];
+    Array.from(array).forEach((el) => {
+        const value = el.innerHTML;
+        const type = el.parentElement.getAttribute('data-type');
+        newArray.push({'value': value, 'type': type})
+    })
+    return newArray;
 }

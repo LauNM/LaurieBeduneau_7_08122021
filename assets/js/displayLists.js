@@ -1,4 +1,4 @@
-import { filterInList } from "./filters.js";
+
 
 export const displayDropdownElements = (list, type) => {
     const listContent = document.createElement('ul');
@@ -26,17 +26,17 @@ export const createIngredientsList = (data) => {
     })
     
 
-    // work only in console
-    const input = document.getElementById('ingredients-input');
-    input.addEventListener('input', (e) => {
-        if(e.target.value.length > 0) {
-            let newList = allIngredients.filter((item) => {
-                return item.toLowerCase().includes(e.target.value.toLowerCase())
-            })
-            console.log(newList);
-        }
-        
-    })
+    // let newList = [];
+    // // works only in console
+    // const input = document.getElementById('ingredients-input');
+    // input.addEventListener('input', (e) => {
+    //     if(e.target.value.length > 0) {
+    //          newList = allIngredients.filter((item) => {
+    //             return item.toLowerCase().includes(e.target.value.toLowerCase())
+    //         })
+    //     }
+    //     console.log(newList);
+    // })
     
     return allIngredients.sort();
 }
@@ -67,7 +67,7 @@ export const createUstensilsList = (data) => {
 
 /* Get dropdown buttons by className and add an event listener */
 export const openDropdown = (dropdowns) => {
-    Array.from(dropdowns).forEach((el) => {
+    dropdowns.forEach((el) => {
         el.addEventListener('click', () => {
             closeAllDropdown(dropdowns);
             el.style.display = "none"
@@ -77,7 +77,7 @@ export const openDropdown = (dropdowns) => {
 }
 
 const closeAllDropdown = (dropdowns) => {
-    Array.from(dropdowns).forEach((el) => {
+    dropdowns.forEach((el) => {
         el.style.display = "flex";
         el.nextElementSibling.style.display = "none";
     })
