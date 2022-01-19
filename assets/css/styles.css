@@ -68,6 +68,7 @@
 
 .filters {
     display: inline-flex;
+    flex-wrap: wrap;
 }
 .filter-dropdown {
     display: flex;
@@ -75,6 +76,7 @@
     align-items: center;
     justify-content: space-between;
     margin-right: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
     min-width: 170px;
     padding: 23px 18px 24px 26px;
@@ -214,4 +216,27 @@
     overflow: hidden; 
 }
 
+@media screen and (max-width: 1330px) {
+    .recipe-container {
+        width: 45%;
+    }
+}
 
+@media screen and (max-width: 900px) {
+    .recipe-container {
+        width: 100%;
+    }
+    .filters > div {
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .filters > div {
+        width: 100%;
+    }
+    .content {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+}
