@@ -1,3 +1,10 @@
+/**
+ * Function to create new tag container
+ * 
+ * @param {String} value value of tag
+ * @param {string} type type of tag (ingredients | appliance | ustensils)
+ * @returns returns HTML tag
+ */
 export const createTag = (value, type) => {
     const tagContainer = document.createElement('span');
     tagContainer.className = "tag-container";
@@ -15,6 +22,12 @@ export const createTag = (value, type) => {
     return tagContainer;
 }
 
+/**
+ * Get HTMLCollection of tags in DOM and create an array with only value and type of tags
+ * 
+ * @param {HTMLCollection} array all HTML tags in DOM
+ * @returns {Array} array of tag object with value and type
+ */
 export const getTagInfos = (array) => {
     let newArray = [];
     Array.from(array).forEach((el) => {

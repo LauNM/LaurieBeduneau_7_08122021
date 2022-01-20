@@ -1,4 +1,11 @@
-export const filteredRecipesList = (data, filterElements) => {
+/**
+ * Filter data with value of search bar input
+ * @param {Array} data 
+ * @param {String} filterElements - Value of search bar input
+ * @returns {Array} returns data that includes value of input
+ */
+
+export const filteredBySearchBar = (data, filterElements) => {
     let newData = data.filter((item) => {
         return item.name.toLowerCase().includes(filterElements.toLowerCase())
             || item.description.toLowerCase().includes(filterElements.toLowerCase())
@@ -8,8 +15,13 @@ export const filteredRecipesList = (data, filterElements) => {
 }
 
 //réécrire avec une boucle for
-
-export const filterByKeyWord = (data, keyWords) => {
+/**
+ * Filter data with tags value
+ * @param {Array} data 
+ * @param {Array} keyWords - Array of tags {value, type}
+ * @returns {Array} returns data === tags value
+ */
+export const filterByKeyWords = (data, keyWords) => {
     let newData = [...data];
     if (keyWords.length > 0) {
         keyWords.forEach((tag) => {
@@ -38,6 +50,12 @@ export const filterByKeyWord = (data, keyWords) => {
     return newData;
 }
 
+/**
+ * Filter list inside dropdown with dropdown input
+ * @param {String} dropdownInput - id of dropdown
+ * @param {Array} list - list of elements in dropdown
+ * @param {Function} creationDropdownList - name of function to create dropdown list
+ */
 export const filterDropdownByKeyWord = (dropdownInput, list, creationDropdownList) => {
     let newList = [];
     const input = document.getElementById(dropdownInput);

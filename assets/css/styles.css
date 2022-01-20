@@ -7,6 +7,18 @@
     font-weight: 700;
 }
 
+.no-recipe-message {
+    font-size: 20px;
+    color: var(--red);
+    width: 100%;
+    margin: 0 20%;
+}
+
+.dropdown-message {
+    color: var(--white);
+    font-style: italic;
+    font-size: 14px;
+}
 /* INPUT SEARCH */
 .input-container {
     display: flex;

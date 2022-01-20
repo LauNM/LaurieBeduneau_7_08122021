@@ -1,5 +1,13 @@
+
+
 const recipesContainer = document.getElementById('recipes');
 
+/**
+ * Create HTML that contains recipe description
+ * 
+ * @param {Object} data - data of one recipe
+ * @returns returns HTML with recipe description
+ */
 const addRecipe = (data) => {
     const recipe = document.createElement('section');
     recipe.className = "recipe-description";
@@ -68,6 +76,12 @@ const addRecipe = (data) => {
     return recipe;
 }
 
+/**
+ * Create recipe container with image and description
+ * 
+ * @param {Object} data 
+ * @returns returns recipe container
+ */
 const createContainer = (data) => {
     const container = document.createElement('div');
     container.className = "recipe-container";
@@ -81,10 +95,23 @@ const createContainer = (data) => {
     return container;
 }
 
-export function displayData(recipeList) {
-    recipesContainer.innerHTML = ""
+/**
+ * Update display of recipes on front page
+ * 
+ * @param {Array} recipeList 
+ */
+export function displayRecipes(recipeList) {
+    recipesContainer.innerHTML = "";
     recipeList.forEach(element => {
     recipesContainer.appendChild(createContainer(element));
     })
+}
+
+export const noRecipeMessage = () => {
+    recipesContainer.innerHTML = "";
+    const message = document.createElement('p');
+    message.className = "no-recipe-message";
+    message.innerHTML = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+    recipesContainer.appendChild(message);
 }
 
