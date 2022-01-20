@@ -17,26 +17,24 @@ export const filterByKeyWord = (data, keyWords) => {
             switch (typeOfTag) {
                 case 'ingredients':
                     newData = newData.filter((item) => {
-                        return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(tag.value.toLowerCase()))
+                        return item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase() === tag.value.toLowerCase())
                     })
                     break;
                 case 'appliance':
                     newData = newData.filter((item) => {
-                        return item.appliance.toLowerCase().includes(tag.value.toLowerCase())
+                        return item.appliance.toLowerCase() === tag.value.toLowerCase()
                     })
                     break;
                 case 'ustensils':
                     newData = newData.filter((item) => {
-                        return item.ustensils.some((elemUst) => elemUst.toLowerCase().includes(tag.value.toLowerCase()))
+                        return item.ustensils.some((elemUst) => elemUst.toLowerCase() === tag.value.toLowerCase())
                     })
                     break;
                 default:
                     return newData;
             }
-
         })
     }
-
     return newData;
 }
 
