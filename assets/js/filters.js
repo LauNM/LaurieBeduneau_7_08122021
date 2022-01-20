@@ -40,20 +40,18 @@ export const filterByKeyWord = (data, keyWords) => {
     return newData;
 }
 
-/* export const filterDropdownByKeyWord = (dropdownInput, list, creationDropdownList) => {
+export const filterDropdownByKeyWord = (dropdownInput, list, creationDropdownList) => {
     let newList = [];
     const input = document.getElementById(dropdownInput);
     input.addEventListener('input', (e) => {
-         if(e.target.value.length > 0) {
-             newList = list.filter((item) => {
+        if (e.target.value.length > 0) {
+            newList = list.filter((item) => {
                 return item.toLowerCase().includes(e.target.value.toLowerCase())
             })
-         }
-         else {
-             newList = list
-         }
+        }
+        else {
+            newList = list
+        }
         creationDropdownList(newList);
-        console.log(filterBySearchBar)
-        addDropdownListener(filterBySearchBar);
     })
-} */
+}
