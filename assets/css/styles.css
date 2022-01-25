@@ -187,8 +187,8 @@
 .recipe-title {
     width: calc(100% - 90px);
     margin: 0;
-    line-height: 21,6px;
-    height: calc(21,6px * 2);
+    line-height: 21.6px;
+    height: calc(21.6px * 2);
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;

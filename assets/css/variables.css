@@ -12,14 +12,17 @@
 }
 .bg-blue {
     background-color: var(--blue);
+    font-size: 18px;
     color: var(--white);
 }
 .bg-red {
     background-color: var(--red);
+    font-size: 18px;
     color: var(--white);
 }
 .bg-green {
     background-color: var(--green);
+    font-size: 18px;
     color: var(--white);
 }
 
