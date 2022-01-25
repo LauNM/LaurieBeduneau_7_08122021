@@ -1,23 +1,21 @@
 /**
  * Filter data with value of search bar input
- * @param {Array} data 
+ * @param {Array} data
  * @param {String} filterElements - Value of search bar input
  * @returns {Array} returns data that includes value of input
  */
 
 export const filteredBySearchBar = (data, filterElements) => {
-    let newData = data.filter((item) => {
+    return data.filter((item) => {
         return item.name.toLowerCase().includes(filterElements.toLowerCase())
             || item.description.toLowerCase().includes(filterElements.toLowerCase())
             || item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(filterElements.toLowerCase()))
-    })
-    return newData;
+    });
 }
 
-//réécrire avec une boucle for
 /**
  * Filter data with tags value
- * @param {Array} data 
+ * @param {Array} data
  * @param {Array} keyWords - Array of tags {value, type}
  * @returns {Array} returns data === tags value
  */
@@ -37,9 +35,9 @@ export const filterByKeyWords = (data, keyWords) => {
                         return item.appliance.toLowerCase() === tag.value.toLowerCase()
                     })
                     break;
-                case 'ustensils':
+                case 'utensils':
                     newData = newData.filter((item) => {
-                        return item.ustensils.some((elemUst) => elemUst.toLowerCase() === tag.value.toLowerCase())
+                        return item.utensils.some((elemUst) => elemUst.toLowerCase() === tag.value.toLowerCase())
                     })
                     break;
                 default:

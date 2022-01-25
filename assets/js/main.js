@@ -2,10 +2,10 @@ import {filteredBySearchBar, filterByKeyWords, filterDropdownByKeyWord } from ".
 import {
     createIngredientsList,
     createApplianceList,
-    createUstensilsList,
+    createUtensilsList,
     createDropdownIngredients,
     createDropdownAppliance,
-    createDropdownUstensils,
+    createDropdownUtensils,
     openDropdown,
     closeAllDropdown
 } from "./dropdowns.js";
@@ -22,13 +22,13 @@ let filterBySearchBar = [...recipes];
 let filterByTag = [...recipes];
 let ingredientList = [];
 let applianceList = [];
-let ustensilsList = [];
+let utensilsList = [];
 
 /**
- * Call function to create ingredients list
+ * Call functions to create ingredients list
  * & Call function to create dropdown with ingredients list
  * & Call function to add event listener when researching an ingredient in dropdown input
- * 
+ *
  * @param {Array} data all data
  */
 const displayListIngredients = (data) => {
@@ -37,10 +37,10 @@ const displayListIngredients = (data) => {
     filterDropdownByKeyWord('ingredients-input', ingredientList, createDropdownIngredients);
 }
 /**
- * Call function to create appliance list
+ * Call functions to create appliance list
  * & Call function to create dropdown with appliance list
  * & Call function to add event listener when researching an appliance in dropdown input
- * 
+ *
  * @param {Array} data all data
  */
 const displayListAppliance = (data) => {
@@ -49,34 +49,34 @@ const displayListAppliance = (data) => {
     filterDropdownByKeyWord('appliance-input', applianceList, createDropdownAppliance);
 }
 /**
- * Call function to create ustensils list
- * & Call function to create dropdown with ustensils list
- * & Call function to add event listener when researching an ustensil in dropdown input
- * 
+ * Call functions to create utensils list
+ * & Call function to create dropdown with utensils list
+ * & Call function to add event listener when researching a utensil in dropdown input
+ *
  * @param {Array} data all data
  */
-const displayListUstensils = (data) => {
-    ustensilsList = [...createUstensilsList(data)];
-    createDropdownUstensils(ustensilsList);
-    filterDropdownByKeyWord('ustensils-input', ustensilsList, createDropdownUstensils);
+const displayListUtensils = (data) => {
+    utensilsList = [...createUtensilsList(data)];
+    createDropdownUtensils(utensilsList);
+    filterDropdownByKeyWord('utensils-input', utensilsList, createDropdownUtensils);
 }
 
 
 /**
- * Display lists (ingredients & appliances & ustensils) and display recipes
+ * Display lists (ingredients & appliances & utensils) and display recipes
  * @param {Array} data all data
  */
 const loadData = (data) => {
     displayListIngredients(data)
     displayListAppliance(data)
-    displayListUstensils(data)
+    displayListUtensils(data)
     if (data.length > 0) {
         displayRecipes(data);
     }
     else {
         noRecipeMessage();
     }
-    
+
 }
 
 openDropdown(dropdowns);
@@ -114,7 +114,6 @@ searchBarInput.addEventListener('input', (e) => {
 document.addEventListener('click', (e) => {
     if (e.target && e.target.className === 'list-element') {
         const list = e.target.parentElement;
-        const dropdown = list.parentElement;
         closeAllDropdown();
         const type = list.getAttribute('data-type');
         const tag = createTag(e.target.textContent, type);

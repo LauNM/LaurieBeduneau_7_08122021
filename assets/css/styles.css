@@ -65,7 +65,7 @@
 .tag-container[data-type="appliance"] {
     background-color: var(--green);
 }
-.tag-container[data-type="ustensils"] {
+.tag-container[data-type="utensils"] {
     background-color: var(--red);
 }
 
@@ -192,7 +192,7 @@
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    overflow: hidden; 
+    overflow: hidden;
 }
 .recipe-cooktime {
     width: 90px;
@@ -216,7 +216,7 @@
     -webkit-line-clamp: 7;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    overflow: hidden; 
+    overflow: hidden;
 }
 .recipe-text {
     width: 50%;
@@ -225,7 +225,7 @@
     -webkit-line-clamp: 8;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1330px) {
@@ -250,5 +250,5 @@
         width: 100%;
         margin-right: 0;
     }
-    
+
 }
