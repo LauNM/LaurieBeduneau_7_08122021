@@ -27,38 +27,45 @@ let utensilsList = [];
 /**
  * Call functions to create ingredients list
  * & Call function to create dropdown with ingredients list
- * & Call function to add event listener when researching an ingredient in dropdown input
  *
  * @param {Array} data all data
  */
-const displayListIngredients = (data) => {
-    ingredientList = [...createIngredientsList(data)];
+ const displayListIngredients = (data) => {
+    ingredientList.splice(0,ingredientList.length);
+    const newIngredientList = [...createIngredientsList(data)];
+    newIngredientList.forEach((ingredient) => {
+        ingredientList.push(ingredient)
+    })
     createDropdownIngredients(ingredientList);
-    filterDropdownByKeyWord('ingredients-input', ingredientList, createDropdownIngredients);
 }
+
 /**
  * Call functions to create appliance list
  * & Call function to create dropdown with appliance list
- * & Call function to add event listener when researching an appliance in dropdown input
  *
  * @param {Array} data all data
  */
 const displayListAppliance = (data) => {
-    applianceList = [...createApplianceList(data)];
+    applianceList.splice(0, applianceList.length);
+    const newApplianceList = [...createApplianceList(data)];
+    newApplianceList.forEach((appliance) => {
+        applianceList.push(appliance)
+    })
     createDropdownAppliance(applianceList);
-    filterDropdownByKeyWord('appliance-input', applianceList, createDropdownAppliance);
 }
 /**
  * Call functions to create utensils list
  * & Call function to create dropdown with utensils list
- * & Call function to add event listener when researching a utensil in dropdown input
  *
  * @param {Array} data all data
  */
 const displayListUtensils = (data) => {
-    utensilsList = [...createUtensilsList(data)];
+    utensilsList.splice(0, utensilsList.length);
+    const newUtensilsList = [...createUtensilsList(data)];
+    newUtensilsList.forEach((utensil) => {
+        utensilsList.push(utensil)
+    })
     createDropdownUtensils(utensilsList);
-    filterDropdownByKeyWord('utensils-input', utensilsList, createDropdownUtensils);
 }
 
 
@@ -147,3 +154,6 @@ document.addEventListener('click', (e) => {
         loadData(filterByTag)
     }
 })
+filterDropdownByKeyWord('ingredients-input', ingredientList, createDropdownIngredients);
+filterDropdownByKeyWord('appliance-input', applianceList, createDropdownAppliance);
+filterDropdownByKeyWord('utensils-input', utensilsList, createDropdownUtensils);
