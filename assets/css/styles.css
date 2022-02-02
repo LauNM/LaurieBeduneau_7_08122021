@@ -232,6 +232,10 @@
     .recipe-container {
         width: 45%;
     }
+    .content {
+        width: 100%;
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -246,9 +250,10 @@
     .filters > div {
         width: 100%;
     }
-    .content {
-        width: 100%;
-        margin-right: 0;
+}
+@media screen and (max-width: 450px) {
+    .list-of-elements {
+        column-count: 2;
     }
 
 }
