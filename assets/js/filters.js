@@ -5,12 +5,16 @@
  * @returns {Array} returns data that includes value of input
  */
 
-export const filteredBySearchBar = (data, filterElements) => {
-    return data.filter((item) => {
-        return item.name.toLowerCase().includes(filterElements.toLowerCase())
-            || item.description.toLowerCase().includes(filterElements.toLowerCase())
-            || item.ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(filterElements.toLowerCase()))
-    });
+ export const filteredBySearchBar = (data, filterElements) => {
+    let newData = [];
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].name.toLowerCase().includes(filterElements.toLowerCase())
+            || data[i].description.toLowerCase().includes(filterElements.toLowerCase())
+            || data[i].ingredients.some((elemIng) => elemIng.ingredient.toLowerCase().includes(filterElements.toLowerCase()))) {
+            newData.push(data[i])
+        }
+    }
+    return newData;
 }
 
 /**
