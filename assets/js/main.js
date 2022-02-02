@@ -119,20 +119,24 @@ searchBarInput.addEventListener('input', (e) => {
  * Filter with Tag
  */
 document.addEventListener('click', (e) => {
-    if (e.target && e.target.className === 'list-element') {
-        const list = e.target.parentElement;
+    if (!getTagInfos(tags).some((item)=> item.value.toLowerCase().includes(e.target.textContent.toLowerCase()))) {
+        if (e.target && e.target.className === 'list-element') {
+            const list = e.target.parentElement;
+            closeAllDropdown();
+            const type = list.getAttribute('data-type');
+            const tag = createTag(e.target.textContent, type);
+            tagSection.appendChild(tag);
+            if (searchBarInput.value.length > 2) {
+                filterBySearchBar = filteredBySearchBar(recipes, searchBarInput.value);
+                filterByTag = filterByKeyWords(filterBySearchBar, getTagInfos(tags));
+            }
+            else {
+                filterByTag = filterByKeyWords(recipes, getTagInfos(tags));
+            }
+            loadData(filterByTag)
+        }
+    } else {
         closeAllDropdown();
-        const type = list.getAttribute('data-type');
-        const tag = createTag(e.target.textContent, type);
-        tagSection.appendChild(tag);
-        if (searchBarInput.value.length > 2) {
-            filterBySearchBar = filteredBySearchBar(recipes, searchBarInput.value);
-            filterByTag = filterByKeyWords(filterBySearchBar, getTagInfos(tags));
-        }
-        else {
-            filterByTag = filterByKeyWords(recipes, getTagInfos(tags));
-        }
-        loadData(filterByTag)
     }
 })
 
