@@ -159,19 +159,13 @@ export const closeAllDropdown = () => {
     })
 }
 
-document.addEventListener('mouseup', function (e) {
+document.addEventListener('mousedown', function (e) {
     let isInside = false;
     dropdowns.forEach((el) => {
         const dropdown = el.nextElementSibling;
 
         if (dropdown.contains(e.target)) {
             isInside = e.target.className !== 'fas fa-chevron-up close';
-            /*if (e.target.className === 'fas fa-chevron-up close') {
-                isInside = false;
-            }
-            else {
-                isInside = true;
-            }*/
         }
     });
     if (!isInside) {

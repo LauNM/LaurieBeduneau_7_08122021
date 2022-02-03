@@ -1,4 +1,4 @@
-import {filteredBySearchBar, filterByKeyWords, filterDropdownByKeyWord } from "./filters.js";
+import { filteredBySearchBar, filterByKeyWords, filterDropdownByKeyWord } from "./filters.js";
 import {
     createIngredientsList,
     createApplianceList,
@@ -30,8 +30,8 @@ let utensilsList = [];
  *
  * @param {Array} data all data
  */
- const displayListIngredients = (data) => {
-    ingredientList.splice(0,ingredientList.length);
+const displayListIngredients = (data) => {
+    ingredientList.splice(0, ingredientList.length);
     const newIngredientList = [...createIngredientsList(data)];
     newIngredientList.forEach((ingredient) => {
         ingredientList.push(ingredient)
@@ -117,10 +117,11 @@ searchBarInput.addEventListener('input', (e) => {
 
 /**
  * Filter with Tag
+ * Verify if the element clicked is not already in [tags]
  */
-document.addEventListener('click', (e) => {
-    if (!getTagInfos(tags).some((item)=> item.value.toLowerCase().includes(e.target.textContent.toLowerCase()))) {
-        if (e.target && e.target.className === 'list-element') {
+document.addEventListener('mousedown', (e) => {
+    if (e.target && e.target.className === 'list-element') {
+        if (!getTagInfos(tags).some((item) => item.value.toLowerCase().includes(e.target.textContent.toLowerCase()))) {
             const list = e.target.parentElement;
             closeAllDropdown();
             const type = list.getAttribute('data-type');
@@ -134,9 +135,9 @@ document.addEventListener('click', (e) => {
                 filterByTag = filterByKeyWords(recipes, getTagInfos(tags));
             }
             loadData(filterByTag)
+        } else {
+            closeAllDropdown();
         }
-    } else {
-        closeAllDropdown();
     }
 })
 
