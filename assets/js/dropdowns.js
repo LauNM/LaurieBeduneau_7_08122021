@@ -159,7 +159,7 @@ export const closeAllDropdown = () => {
     })
 }
 
-document.addEventListener('mouseup', function (e) {
+document.addEventListener('mousedown', function (e) {
     let isInside = false;
     dropdowns.forEach((el) => {
         const dropdown = el.nextElementSibling;

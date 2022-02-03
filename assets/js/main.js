@@ -117,10 +117,11 @@ searchBarInput.addEventListener('input', (e) => {
 
 /**
  * Filter with Tag
+ * Verify if the element clicked is not already in [tags]
  */
-document.addEventListener('click', (e) => {
-    if (!getTagInfos(tags).some((item)=> item.value.toLowerCase().includes(e.target.textContent.toLowerCase()))) {
-        if (e.target && e.target.className === 'list-element') {
+ document.addEventListener('mousedown', (e) => {
+    if (e.target && e.target.className === 'list-element') {
+        if (!getTagInfos(tags).some((item) => item.value.toLowerCase().includes(e.target.textContent.toLowerCase()))) {
             const list = e.target.parentElement;
             closeAllDropdown();
             const type = list.getAttribute('data-type');
@@ -134,11 +135,12 @@ document.addEventListener('click', (e) => {
                 filterByTag = filterByKeyWords(recipes, getTagInfos(tags));
             }
             loadData(filterByTag)
+        } else {
+            closeAllDropdown();
         }
-    } else {
-        closeAllDropdown();
     }
 })
+
 
 
 /**
